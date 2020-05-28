@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block title%} 页面导航 {% endblock %}
+{% block link%}
+    <a href="{{ url_for('login') }}"> 管理员登录 </a>
+    {% if admin_user %}
+    |<a href="{{ url_for('logout') }}"> 注销  </a>
+    |<a href="{{ url_for('temp_list') }}">模板列表</a>
+    |<a href="{{ url_for('modify_pass') }}">修改个人密码</a>
+    |<a href="{{ url_for('show_app_log') }}">app日志</a>
+    {% endif %}
+
+    {% if admin_user=="admin" %}
+        |<a href="{{ url_for("add_user") }}">添加管理员用户</a>
+    {% endif %}
+
+{#    <a href="{{ url_for('user_manage') }}"> 用户管理 </a>#}
+{%  endblock%}
+{% block body%}
+{% endblock%}

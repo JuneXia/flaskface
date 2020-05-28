@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %} 添加用户 {% endblock %}
+{% block link %}
+    <a href="{{ url_for("index") }}">首页</a>
+    {% if admin_user %}
+        | [{{ admin_user  }}] 已登录|
+        <a href="{{ url_for("logout") }}">退出登录</a> |
+        <a href="{{ url_for('temp_list')}}"> 模板列表 </a>
+    {% endif %}
+    {#     {% if admin_user %} | [{{ admin_user  }}] 已登录| <a href="{{ url_for("logout") }}">退出登录</a>{% endif %}#}
+{% endblock %}
+{% block body %}
+    <h2> 添加管理员用户 </h2>
+    {% if error %}
+        <div class = error>
+            <strong>Error : </strong> {{error}}
+        </div>
+    {% endif %}
+    <form action="" method=post >
+        <dl>
+            <dt>用户名: </dt>
+            <dd><input type=text name=user_name size=30> </dd>
+            <dt>密码:</dt>
+            <dd><input type=password name=pass_wd size=30> </dd>
+        </dl>
+        <div class=actions>
+            <input type=submit value="添加">
+        </div>
+    </form>
+
+{% endblock %}

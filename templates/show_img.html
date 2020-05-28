@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %} 查看图片 {% endblock %}
+{% block link %} 
+	<a href="{{ url_for('index')}}"> 返回 </a>
+{% endblock %}
+{% block body %}
+	{% if error %}
+	<div class = error>
+	  <strong>Error : </strong> {{error}}
+	</div>
+	{% endif %}
+    <div>
+        <img src={{ img }} />
+{#        <img src="{{ img}} " />#}
+
+    </div>
+
+{% endblock %} 

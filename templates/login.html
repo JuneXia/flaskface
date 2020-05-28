@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block title%} robot {% endblock %}
+{#{% block link%}#}
+{#    <a href="{{ url_for('add_template') }}"> 添加 </a>#}
+{#{%  endblock%}#}
+{% block body%}
+    <h2> 管理员登录 </h2>
+    {% if error %}
+    <div class="error">
+        <strong>error:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <form action="" method=post >
+        <dl>
+            <dt>用户名: </dt>
+            <dd><input type=text name=user_name size=30> </dd>
+            <dt>密码:</dt>
+            <dd><input type=password name=pass_wd size=30> </dd>
+        </dl>
+        <div class=actions>
+            <input type=submit value="登录">
+        </div>
+    </form>
+{% endblock%}

@@ -1,0 +1,15 @@
+<!doctype html>
+<title> {% block title %} 商务机器人 {% endblock %} </title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>人脸识别</h1>
+  <div class=navigation>
+    {% block link %}{% endblock %}
+  </div>
+  <div class=body>
+    {% block body %}{% endblock %}
+   </div>
+  <div class=footer>
+     &mdash; 国辰机器人
+  </div>
+</div>

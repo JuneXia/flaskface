@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block title%} robot {% endblock %}
+{% block link%}
+	<a href="{{ url_for('add_template') }}">  添加  </a>
+	<a href="{{ url_for('recognize') }}">  识别  </a>
+	<a href="{{ url_for('query') }}">  查询  </a>
+{%  endblock%}
+{% block body%}
+	<h2> 人脸列表 </h2>
+	<table width="600" border="1", align="center">
+	  <tr>
+	    <th align="center"> 编号 </th>
+		<th align="center"> 姓名 </th>
+	    <th align="center"> 人脸图片 </th>
+	    <!--<th align="center"> 模板标识 </th>-->
+        <th align="center"> 操作 </th>
+	  </tr>
+	  {% for tp in tps %}
+	  <tr>
+	    <th align="center"> {{tp.person_id}}</th>
+	    <th align="center"> {{tp.person_name}}</th>
+
+        <!--<th align="center"> {{tp.img}}<span></span>|<span></span>-->
+
+        <th align="center">
+			{% for t in tp.img %}
+			<a href="/show_img?img_name={{ t.img_name }}">{{t.mark}}</a>
+			{% endfor %}
+		</th>
+
+        <!--<th align="center"> {{tp.img}}<span></span>|<span></span><a href="/show_img?img_name={{ tp.img }}">查看</a> </th>-->
+	    <!--<th align="center"> {{tp.xml}}</th>-->
+        <th align="center">
+			<a href="/remove_template?person_id={{ tp.person_id }}">删除</a>
+			<span></span>|<span></span>
+			<a href="/modify_template?person_id={{ tp.person_id }}">编辑</a>
+		</th>
+	  </tr>
+	  {% endfor %}
+	</table>
+{% endblock%}
+

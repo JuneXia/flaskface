@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block title %} 增添模板 {% endblock %}
+{% block link %} 
+	<a href="{{ url_for('temp_list')}}"> 模板列表 </a>
+    {% if admin_user %}
+        | [{{ admin_user  }}] 已登录|
+        <a href="{{ url_for("logout") }}">退出登录</a> |
+        <a href="{{ url_for("index") }}">首页</a>
+    {% endif %}
+{#     {% if admin_user %} | [{{ admin_user  }}] 已登录| <a href="{{ url_for("logout") }}">退出登录</a>{% endif %}#}
+{% endblock %}
+{% block body %}
+	<h2> 增添模板 </h2>
+	{% if error %}
+	<div class = error>
+	  <strong>Error : </strong> {{error}}
+	</div>
+	{% endif %}
+	<form action="" method=post enctype="multipart/form-data">
+	  <dl id="temp_table">
+       <!--<dt>map_id: </dt>
+       <dd><input type=text name=map_id size=30> </dd>
+	   <dt>position_id: </dt>
+	   <dd><input type=text name=position_id size=30> </dd>-->
+
+		  <dt>person_name: </dt>
+	   <dd><input type=text name=person_name size=30> </dd>
+
+	      <dt>模板A:</dt>
+	   <dd><input type=file name=A size=30> </dd>
+
+		  <dt>模板B:</dt>
+	   <dd><input type=file name=B size=30> </dd>
+
+		  <dt>模板C:</dt>
+	   <dd><input type=file name=C size=30> </dd>
+	   <!--<dt>模板文件:</dt>
+	   <dd><input type=file name=xml size=30> </dd>-->
+	  </dl>
+	  <div class=actions>
+	    <input type=submit value="添加">
+	  </div>
+	</form>
+	<div>
+		<button onclick="add_img()">add_img</button>
+		<button onclick="del_img()">del_img</button>
+	</div>
+	<script language="javascript">
+        var index = 'A';
+		function add_img() {
+			index = index + 1;
+			// var dt_elem = document.createElement("dt");
+			// dt_elem.innerText = "图片文件";
+			var elem = document.createElement("dd");
+			var img_input = document.createElement("input");
+			img_input.setAttribute("type", "file");
+			img_input.setAttribute("size", "30");
+			img_input.setAttribute("name", "img"+index.toString());
+			img_input.setAttribute("id", "img"+index.toString());
+			elem.setAttribute("id", "cell"+index.toString());
+			elem.setAttribute("name", "cell"+index.toString());
+			elem.appendChild(img_input);
+			elem.appendChild(img_input);
+			var temp_table = document.querySelector("#temp_table");
+			temp_table.appendChild(elem);
+
+		};
+		function del_img() {
+			var temp_table = document.querySelector("#temp_table");
+
+			if (index < 1)
+				return;
+			var cell_elem = document.querySelector("dd#cell"+index.toString());
+			if (cell_elem)
+				temp_table.removeChild(cell_elem);
+			index = index -1;
+
+		}
+	</script>
+
+{% endblock %} 

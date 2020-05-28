@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %} 人脸识别 {% endblock %}
+{% block link %}
+	<a href="{{ url_for('temp_list')}}"> 返回 </a>
+{% endblock %}
+{% block body %}
+	<h2> 输入图片 </h2>
+	{% if error %}
+	<div class = error>
+	  <strong>Error : </strong> {{error}}
+	</div>
+	{% endif %}
+	<form action="" method=post enctype="multipart/form-data">
+	  <dl>
+	    <!--<dt>person_id: </dt>-->
+	    <!--<dd><input type=text name=person_id size=30> </dd>-->
+	    <dt>人脸图片:</dt>
+	    <dd><input type=file name=img size=30> </dd>
+	    <!--<dt>模板文件:</dt>-->
+	    <!--<dd><input type=file name=xml size=30> </dd>-->
+	  </dl>
+	  <div class=actions>
+	    <input type=submit value="识别">
+	  </div>
+	</form>
+
+{% endblock %} 

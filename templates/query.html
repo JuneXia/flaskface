@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %} 人脸识别 {% endblock %}
+{% block link %} 
+	<a href="{{ url_for('temp_list')}}"> 返回 </a>
+{% endblock %}
+{% block body %}
+	<h2> 人脸查询 </h2>
+	{% if error %}
+	<div class = error>
+	  <strong>Error : </strong> {{error}}
+	</div>
+	{% endif %}
+	<form action="" method=post enctype="multipart/form-data">
+	  <dl>
+	    <dt>请输入person_id或者person_name: </dt>
+	    <dd><input type=text name=keyword size=30> </dd>
+	  </dl>
+	  <div class=actions>
+	    <input type=submit value="查询">
+	  </div>
+	</form>
+
+{% endblock %} 
